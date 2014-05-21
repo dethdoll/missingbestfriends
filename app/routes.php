@@ -13,5 +13,10 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+    $image = Image::make('http://static3.businessinsider.com/image/5238c9c5ecad047f12b2751a/internet-famous-grumpy-cat-just-landed-an-endorsement-deal-with-friskies.jpg');
+ 
+    return Response::make($image, 200, array('Content-Type', 'image/jpeg'));
+    
 });
+
+Route::resource('pets', 'PetController');
