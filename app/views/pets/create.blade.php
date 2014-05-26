@@ -26,13 +26,14 @@
                </div>
             </div-->                
 		{{ Form::label('picture', 'Picture') }}
-		{{ Form::file('picture') }}		
-
-		{{ Form::label('lost', 'Lost') }}
-		{{ Form::text('lost', Input::old('lost'), array('class' => 'form-control')) }}		
-
-		{{ Form::label('found', 'Found') }}
-		{{ Form::text('found', Input::old('found'), array('class' => 'form-control')) }}		
+		{{ Form::file('picture') }}	
+                
+                {{ Form::label('lost', 'Lost') }}
+                {{ Form::radio('type_post', 'l') }}
+                
+                {{ Form::label('found', 'Found') }}
+                {{ Form::radio('type_post', 'f') }}    
+                <br>
 
 		{{ Form::label('last_day_seen', 'Last day seen') }}
 		{{ Form::text('last_day_seen', Input::old('last_day_seen'), array('class' => 'form-control')) }}		

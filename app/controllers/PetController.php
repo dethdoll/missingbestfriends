@@ -54,20 +54,19 @@ class PetController extends \BaseController {
             } else {
                 // store
                 $pet = new Pet;
-                $pet->picture       = $name;
-                $pet->lost         = Input::get('lost');
-                $pet->found      = Input::get('found');
-                $pet->last_day_seen   = Input::get('last_day_seen');
-                $pet->last_seen        = Input::get('last_seen');
-                $pet->description        = Input::get('description');
-                $pet->phone          = Input::get('phone');
-                $pet->email          = Input::get('email');
-                $pet->contact_name          = Input::get('contact_name');
+                $pet->picture           = $name;
+                $pet->type_post         = Input::get('type_post');
+                $pet->last_day_seen     = Input::get('last_day_seen');
+                $pet->last_seen         = Input::get('last_seen');
+                $pet->description       = Input::get('description');
+                $pet->phone             = Input::get('phone');
+                $pet->email             = Input::get('email');
+                $pet->contact_name      = Input::get('contact_name');
                 $pet->pet_name          = Input::get('pet_name');
-                $pet->type          = Input::get('type');
-                $pet->breed          = Input::get('breed');
-                $pet->color          = Input::get('color');
-                $pet->specific_marks  = Input::get('specific_marks');			
+                $pet->type              = Input::get('type');
+                $pet->breed             = Input::get('breed');
+                $pet->color             = Input::get('color');
+                $pet->specific_marks    = Input::get('specific_marks');			
                 $pet->save();
 
                 // redirect
