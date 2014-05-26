@@ -37,11 +37,46 @@ class PetController extends \BaseController {
                                   
             $name = $file->getClientOriginalName();
 
-            $image = Image::make(file_get_contents('http://blog.xtremetattoosupplies.com/wp-content/uploads/2014/03/o-GRUMPY-CAT-APOCALYPSE-facebook.jpg'));
-
             $file->move(public_path('images'), time().'-'.$name);
             
-            return Response::make($image, 200, ['Content-Type' => 'image/jpg']);
+            // validate
+            // read more on validation at http://laravel.com/docs/validation
+            $rules = array(
+                'picture'           => 'required',
+                'description'       => 'required'
+            );
+            $validator = Validator::make(Input::all(), $rules);
+
+            // process the login
+            if ($validator->fails()) {
+                return Redirect::to('pets/create')
+                        ->withErrors($validator);
+            } else {
+                // store
+                $pet = new Pet;
+                $pet->picture       = $name;
+                $pet->lost         = Input::get('lost');
+                $pet->found      = Input::get('found');
+                $pet->last_day_seen   = Input::get('last_day_seen');
+                $pet->last_seen        = Input::get('last_seen');
+                $pet->description        = Input::get('description');
+                $pet->phone          = Input::get('phone');
+                $pet->email          = Input::get('email');
+                $pet->contact_name          = Input::get('contact_name');
+                $pet->pet_name          = Input::get('pet_name');
+                $pet->type          = Input::get('type');
+                $pet->breed          = Input::get('breed');
+                $pet->color          = Input::get('color');
+                $pet->specific_marks  = Input::get('specific_marks');			
+                $pet->save();
+
+                // redirect
+                Session::flash('message', 'Successfully created pet!');
+                //return Redirect::to('admin/franchise');
+            }
+            
+            
+            return('done!');
 	}
 
 

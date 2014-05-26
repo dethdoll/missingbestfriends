@@ -10,8 +10,23 @@
 {{ Form::open(array('route' => 'pets.store', 'files' => true)) }}
 
 	<div class="form-group">
+
+                
+            <!--div id="userpic" class="userpic">
+               <div class="js-preview userpic__preview"></div>
+               <div class="btn btn-success js-fileapi-wrapper">
+                  <div class="js-browse">
+                     <span class="btn-txt">Choose</span>
+                     <input type="file" name="filedata" id="picture">
+                  </div>
+                  <div class="js-upload" style="display: none;">
+                     <div class="progress progress-success"><div class="js-progress bar"></div></div>
+                     <span class="btn-txt">Uploading</span>
+                  </div>
+               </div>
+            </div-->                
 		{{ Form::label('picture', 'Picture') }}
-		{{ Form::file('picture')}}
+		{{ Form::file('picture') }}		
 
 		{{ Form::label('lost', 'Lost') }}
 		{{ Form::text('lost', Input::old('lost'), array('class' => 'form-control')) }}		
@@ -32,7 +47,7 @@
 		{{ Form::text('phone', Input::old('phone'), array('class' => 'form-control')) }}		
 
 		{{ Form::label('email', 'Email') }}
-		{{ Form::text('email', Input::old('email'), array('class' => 'form-control')) }}			
+		{{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}			
 
 		{{ Form::label('contact_name', 'Contact name') }}
 		{{ Form::text('contact_name', Input::old('contact_name'), array('class' => 'form-control')) }}		
