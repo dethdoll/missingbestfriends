@@ -9,7 +9,11 @@ class PetController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+            //Get all the pets
+            $pets = Pet::all();
+
+            //Load the view and pass the services
+            return View::make('pets.index')->with('pets', $pets);
 	}
 
 
